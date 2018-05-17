@@ -27,11 +27,6 @@ abstract class AbstractElasticsearchTestCase extends WebTestCase
     private $managers = [];
 
     /**
-     * @var ContainerInterface
-     */
-    private $container;
-
-    /**
      * {@inheritdoc}
      */
     protected function setUp()
@@ -172,12 +167,23 @@ abstract class AbstractElasticsearchTestCase extends WebTestCase
      */
     protected function getContainer($reinitialize = false, $kernelOptions = [])
     {
-        if ($this->container === null || $reinitialize) {
+        if (static::$container === null || $reinitialize) {
             static::bootKernel($kernelOptions);
-            $this->container = static::$kernel->getContainer();
+            static::$container = static::$kernel->getContainer();
         }
 
-        return $this->container;
+        return static::$container;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    protected static function createKernel(array $options = [])
+    {
+        $kernel = new \AppKernel('test', true);
+        $kernel->boot();
+
+        return $kernel;
     }
 
     /**
