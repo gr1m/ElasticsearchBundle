@@ -27,6 +27,11 @@ abstract class AbstractElasticsearchTestCase extends WebTestCase
     private $managers = [];
 
     /**
+     * @var ContainerInterface
+     */
+    protected static $container;
+
+    /**
      * {@inheritdoc}
      */
     protected function setUp()
