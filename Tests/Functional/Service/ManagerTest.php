@@ -180,7 +180,7 @@ class ManagerTest extends AbstractElasticsearchTestCase
         $exceptionMessage,
         $exception = 'InvalidArgumentException'
     ) {
-        $this->setExpectedException($exception, $exceptionMessage);
+        $this->expectException($exception, $exceptionMessage);
 
         /** @var Manager $manager */
         $manager = $this->getManager();

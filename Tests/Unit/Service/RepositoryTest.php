@@ -13,7 +13,7 @@ namespace ONGR\ElasticsearchBundle\Tests\Unit\Service;
 
 use ONGR\ElasticsearchBundle\Service\Repository;
 
-class RepositoryTest extends \PHPUnit_Framework_TestCase
+class RepositoryTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Data provider for testConstructorException().
@@ -45,7 +45,7 @@ class RepositoryTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorException($className, $expectedException, $expectedExceptionMessage)
     {
-        $this->setExpectedException($expectedException, $expectedExceptionMessage);
+        $this->expectException($expectedException, $expectedExceptionMessage);
 
         new Repository(null, $className);
     }
